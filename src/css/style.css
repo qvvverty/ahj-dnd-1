@@ -17,13 +17,17 @@
   height: 50px;
   padding: 5px;
 
-  /* cursor: pointer; */
   cursor: grab;
   border: 1px solid;
 }
 
 .grabbed {
   position: absolute;
+  pointer-events: none;
 
+  /* cursor: grabbing; */
+}
+
+.keep-grabbing {
   cursor: grabbing;
 }

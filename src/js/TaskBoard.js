@@ -12,7 +12,11 @@ export default class TaskBoard {
     if (event.target.classList.contains('task')) {
       this.grabbedEl = event.target;
       this.prevToGrabbedEl = this.grabbedEl.previousElementSibling;
-      event.target.classList.add('grabbed');
+      this.grabbedEl.classList.add('grabbed');
+
+      // cursor "grabbing" from the start
+      this.grabbedEl.closest('.task-column').classList.add('keep-grabbing');
+
       this.shiftGrabbedElX = event.clientX - this.grabbedEl.getBoundingClientRect().left;
       this.shiftGrabbedElY = event.clientY - this.grabbedEl.getBoundingClientRect().top;
       this.taskBoardEl.addEventListener('mousemove', this.drag.bind(this));
@@ -23,9 +27,15 @@ export default class TaskBoard {
     this.grabbedEl.style.left = `${event.pageX - this.shiftGrabbedElX - this.taskBoardEl.offsetLeft}px`;
     this.grabbedEl.style.top = `${event.pageY - this.shiftGrabbedElY - this.taskBoardEl.offsetTop}px`;
 
-    console.log(document.elementFromPoint(parseInt(this.grabbedEl.style.left, 10), parseInt(this.grabbedEl.style.top, 10)).classList.contains('task'));
-      // console.log('Aaa!');
-      // console.log(parseInt(this.grabbedEl.style.left, 10));
-    // }
+    this.taskBoardEl.addEventListener('mouseover', TaskBoard.keepGrabbing);
+
+    if (document.elementFromPoint(event.pageX, event.pageY).classList.contains('task')) {
+      console.log('Aaa!');
+    }
+  }
+
+  static keepGrabbing(event) {
+    event.target.classList.add('keep-grabbing');
+    event.relatedTarget.classList.remove('keep-grabbing');
   }
 }
