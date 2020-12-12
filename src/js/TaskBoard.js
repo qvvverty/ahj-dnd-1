@@ -17,16 +17,14 @@ export default class TaskBoard {
       this.grabbedEl = event.target;
       this.grabbedElClone = this.grabbedEl.cloneNode(true);
       this.grabbedElClone.classList.add('dropzone');
-      this.prevToGrabbedEl = this.grabbedEl.previousElementSibling;
+      this.grabbedEl.style.width = `${this.grabbedEl.getBoundingClientRect().width}px`;
       this.grabbedEl.classList.add('grabbed');
 
-      // cursor "grabbing" from the start
-      // this.grabbedEl.closest('.task-column').classList.add('keep-grabbing'); // ?
-      document.elementFromPoint(event.pageX, event.pageY).classList.add('keep-grabbing');
       this.taskBoardEl.addEventListener('mouseover', this.keepGrabbing);
 
       this.shiftGrabbedElX = event.clientX - this.grabbedEl.getBoundingClientRect().left;
       this.shiftGrabbedElY = event.clientY - this.grabbedEl.getBoundingClientRect().top;
+      this.drag(event);
       this.taskBoardEl.addEventListener('mousemove', this.drag);
       this.taskBoardEl.addEventListener('mouseup', this.drop);
     }
@@ -39,6 +37,15 @@ export default class TaskBoard {
 
     this.underDraggedEl = document.elementFromPoint(event.pageX, event.pageY);
     this.showDropPlace(event);
+
+    // if (
+    //   !this.underDraggedEl.classList.contains('task')
+    //   && !this.underDraggedEl.classList.contains('task-column')
+    //   && !this.underDraggedEl.classList.contains('taskboard')
+    // ) {
+    //   this.taskBoardEl.dispatchEvent(new Event('mouseup'));
+    //   console.log('Aaa!');
+    // }
   }
 
   // eslint-disable-next-line class-methods-use-this
