@@ -1,6 +1,7 @@
 import DragAndDrop from './DragAndDrop';
 import AddTask from './AddTask';
 import RemoveTask from './RemoveTask';
+import SaveLoad from './SaveLoad';
 
 export default class TaskBoard {
   bindToDOM(parentEl) {
@@ -14,5 +15,10 @@ export default class TaskBoard {
 
     const removeTask = new RemoveTask();
     removeTask.bindToDOM(parentEl);
+
+    const saveLoad = new SaveLoad();
+    saveLoad.bindToDOM(parentEl);
+    // saveLoad.saveState();
+    // SaveLoad.loadState();
   }
 }
