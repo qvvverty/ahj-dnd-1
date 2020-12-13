@@ -1,5 +1,6 @@
 import DragAndDrop from './DragAndDrop';
 import AddTask from './AddTask';
+import RemoveTask from './RemoveTask';
 
 export default class TaskBoard {
   bindToDOM(parentEl) {
@@ -10,5 +11,8 @@ export default class TaskBoard {
 
     const addTask = new AddTask();
     addTask.bindToDOM(parentEl);
+
+    const removeTask = new RemoveTask();
+    removeTask.bindToDOM(parentEl);
   }
 }

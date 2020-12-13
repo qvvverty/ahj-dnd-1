@@ -22,7 +22,10 @@ export default class AddTask {
       if (this.activeNewTaskTextarea.value) {
         const newTaskEl = document.createElement('div');
         newTaskEl.classList.add('task');
-        newTaskEl.innerText = this.activeNewTaskTextarea.value;
+        newTaskEl.innerHTML = `
+        ${this.activeNewTaskTextarea.value}
+        <div class="remove-task">✕</div>
+        `;
         this.activeNewTaskEl.closest('.add-task-btn').before(newTaskEl);
 
         this.closeAddTaskPopup();

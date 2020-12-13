@@ -28,6 +28,7 @@
 }
 
 .task {
+  position: relative;
   display: block;
   margin-bottom: 5px;
   box-sizing: border-box;
@@ -41,6 +42,19 @@
   border: 1px solid;
 
   background-color: ivory;
+}
+
+.remove-task {
+  display: none;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+
+  cursor: pointer;
+}
+
+.task:hover .remove-task {
+  display: block;
 }
 
 .grabbed {
