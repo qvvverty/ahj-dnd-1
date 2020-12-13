@@ -20,12 +20,7 @@ export default class AddTask {
   addTask(keydown) {
     if (keydown.keyCode === 13 && keydown.target.classList.contains('new-task-text')) {
       if (this.activeNewTaskTextarea.value) {
-        const newTaskEl = document.createElement('div');
-        newTaskEl.classList.add('task');
-        newTaskEl.innerHTML = `
-        ${this.activeNewTaskTextarea.value}
-        <div class="remove-task">✕</div>
-        `;
+        const newTaskEl = AddTask.createTaskEl(this.activeNewTaskTextarea.value);
         this.activeNewTaskEl.closest('.add-task-btn').before(newTaskEl);
 
         this.closeAddTaskPopup();
@@ -33,6 +28,17 @@ export default class AddTask {
         keydown.preventDefault();
       }
     }
+  }
+
+  static createTaskEl(content) {
+    const taskEl = document.createElement('div');
+    taskEl.classList.add('task');
+    taskEl.innerHTML = `
+      ${content}
+      <div class="remove-task">✕</div>
+    `;
+
+    return taskEl;
   }
 
   closeAddTaskPopup() {
