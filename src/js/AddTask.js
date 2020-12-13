@@ -10,8 +10,8 @@ export default class AddTask {
       this.closeAddTaskPopup();
       this.activeNewTaskEl = click.target.querySelector('.new-task-text-wrapper');
       this.activeNewTaskTextarea = this.activeNewTaskEl.querySelector('.new-task-text');
-      this.activeNewTaskTextarea.select();
       this.activeNewTaskEl.classList.add('visible');
+      this.activeNewTaskTextarea.select();
     } else if (!click.target.classList.contains('new-task-text')) {
       this.closeAddTaskPopup();
     }
