@@ -4,6 +4,9 @@ export default class SaveLoad {
   bindToDOM(parentEl) {
     this.parentEl = parentEl;
     this.taskColumns = parentEl.getElementsByClassName('task-column');
+
+    window.addEventListener('unload', this.saveState.bind(this));
+    window.addEventListener('DOMContentLoaded', SaveLoad.loadState);
   }
 
   saveState() {

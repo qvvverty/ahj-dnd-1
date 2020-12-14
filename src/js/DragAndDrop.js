@@ -72,13 +72,7 @@ export default class TaskBoard {
     }
 
     if (this.underDraggedEl.classList.contains('task-column')) {
-      // this.underDraggedEl.append(this.grabbedElClone);
       this.underDraggedEl.querySelector('.add-task-btn').before(this.grabbedElClone);
     }
-
-    // if (this.underDraggedEl.classList.contains('add-task-btn')) {
-    //   // this.underDraggedEl.append(this.grabbedElClone);
-    //   this.underDraggedEl.before(this.grabbedElClone);
-    // }
   }
 }

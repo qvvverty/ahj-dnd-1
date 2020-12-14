@@ -18,7 +18,5 @@ export default class TaskBoard {
 
     const saveLoad = new SaveLoad();
     saveLoad.bindToDOM(parentEl);
-    // saveLoad.saveState();
-    // SaveLoad.loadState();
   }
 }
